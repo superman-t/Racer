@@ -1,2 +1,2 @@
-# Racer
-使用CocosCreator制作的微信赛车小游戏
+使用CocosCreator的绘图功能制作的微信赛车小游戏。
+
