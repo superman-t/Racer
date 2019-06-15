@@ -24,14 +24,14 @@ var COLORS = {
         rumble: '#BBBBBB'
     },
     START: {
-        road: 'white',
-        grass: 'white',
-        rumble: 'white'
+        road: '#FFFFFF',
+        grass: '#FFFFFF',
+        rumble: '#FFFFFF'
     },
     FINISH: {
-        road: 'black',
-        grass: 'black',
-        rumble: 'black'
+        road: '#000000',
+        grass: '#000000',
+        rumble: '#000000'
     }
 };
 

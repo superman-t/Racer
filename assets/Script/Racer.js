@@ -72,7 +72,7 @@ cc.Class({
             this.ctx.clear();
             this.interval = 2;
         }
-        this.position = Utils.increase(this.position, dt * this.speed, this.trackLength);
+        this.position = Utils.increase(this.position, this.speed, this.trackLength);
     },
 
     lateUpdate: function()
@@ -81,22 +81,19 @@ cc.Class({
         var maxy = this.height;
 
         var n, segment;
-        if (baseSegment.looped)
-        {
-            debugger;
-        }
+
         // cc.log(baseSegment.looped, baseSegment.index);
         for (n = 0; n < this.drawDistance; n++) {
 
-            segment = this.segments[(baseSegment.index + n) % this.segments.length];
+            segment = this.segments[(baseSegment.index + n) % this.segments.length ];
             segment.looped = segment.index < baseSegment.index;
             segment.fog = Utils.exponentialFog(n / this.drawDistance, this.fogDensity);
-
+            
             Utils.project(segment.p1, (this.playerX * this.roadWidth), this.cameraHeight, this.position - (segment.looped ? this.trackLength : 0), this.cameraDepth, this.width, this.height*0.6, this.roadWidth);
             Utils.project(segment.p2, (this.playerX * this.roadWidth), this.cameraHeight, this.position - (segment.looped ? this.trackLength : 0), this.cameraDepth, this.width, this.height*0.6, this.roadWidth);
 
-            if ((segment.p1.camera.z <= this.cameraDepth) || // behind us
-                (segment.p2.screen.y >= maxy)) // clip by (already rendered) segment
+            if ((segment.p1.camera.z < this.cameraDepth) || // behind us
+                (segment.p2.screen.y > maxy)) // clip by (already rendered) segment
                 continue;
 
             Render.segment(this.ctx, this.width, this.lanes,
@@ -147,6 +144,6 @@ cc.Class({
     },
 
     findSegment: function (z) {
-        return this.segments[Math.floor(z / this.segmentLength + 0.5) % this.segments.length];
+        return this.segments[Math.floor(z / this.segmentLength) % this.segments.length];
     },
 });
