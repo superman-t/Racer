@@ -18,6 +18,31 @@ var Utils = {
         return result;
     },
 
+    percentRemaining: function( n, total)
+    {
+        return (n % total) / total;
+    },
+
+    interpolate: function(a, b, percent)
+    {
+        return a + (b - a) * percent;
+    },
+    
+    easeIn: function(a, b, percent)
+    {
+        return a + (b - a) * Math.pow(percent, 2);
+    },
+
+    easeOut: function(a, b, percent)
+    {
+        return a + (b - a) * (1 - Math.pow( 1 - percent, 2));
+    },
+
+    easeInOut: function( a, b, percent)
+    {
+        return a + (b - a) * (-Math.cos(percent * Math.PI)/2 + 0.5);
+    },
+
     project: function (p, cameraX, cameraY, cameraZ, cameraDepth, width, height, roadWidth) {
         p.camera.x = (p.world.x || 0) - cameraX;
         p.camera.y = (p.world.y || 0) - cameraY;

@@ -300,7 +300,7 @@
     "fieldOfView": 100,
     "cameraHeight": 1000,
     "cameraDepth": null,
-    "drawDistance": 50,
+    "drawDistance": 100,
     "fogDensity": 5,
     "position": 0,
     "trackLength": 2,
