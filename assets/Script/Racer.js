@@ -70,14 +70,16 @@ cc.Class({
         this.interval -= dt;
         // if ( this.interval < 0)
         {
-            this.ctx.clear();
-            this.interval = 2;
+            // this.ctx.clear();
+
+            this.interval = 1;
         }
         this.position = Utils.increase(this.position, this.speed, this.trackLength);
     },
 
     lateUpdate: function()
     {
+        this.ctx.clear();
         var baseSegment = this.findSegment(this.position);
         var basePercent = Utils.percentRemaining(this.position, this.segmentLength);
         var playerSegment = this.findSegment(this.position + this.playerZ);
