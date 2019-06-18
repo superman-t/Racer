@@ -80,6 +80,7 @@ cc.Class({
     lateUpdate: function()
     {
         this.ctx.clear();
+        
         var baseSegment = this.findSegment(this.position);
         var basePercent = Utils.percentRemaining(this.position, this.segmentLength);
         var playerSegment = this.findSegment(this.position + this.playerZ);
